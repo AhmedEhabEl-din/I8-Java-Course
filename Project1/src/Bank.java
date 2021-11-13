@@ -11,6 +11,7 @@ public class Bank {
 * */
     public Bank (int capacity){
         this.capacity = capacity;
+        accounts = new Account[this.capacity];
     }
 
     public void deposit(Account account,double amount){
@@ -46,9 +47,7 @@ public class Bank {
 
     public void expandArray(){
         Account[] temporaryArray = new Account[capacity+capacity];
-        for (int i = 0; i < capacity ; i++) {
-            temporaryArray[i] = accounts[i];
-        }
+        if (capacity >= 0) System.arraycopy(accounts, 0, temporaryArray, 0, capacity);
         capacity += capacity;
         accounts = temporaryArray;
     }
@@ -63,7 +62,10 @@ public class Bank {
 
     public Account getAccountByPhoneNumber(String number){
         for (int i = 0; i <size ; i++) {
-            if (accounts[i].getNumber().equals(number))
+            // 46 57 88
+            String account_number = String.join("",accounts[i].getNumber().split(" "));
+            String temp_number = String.join("",number.split(" "));
+            if (account_number.equals(temp_number))
                 return accounts[i];
         }
         return null;
