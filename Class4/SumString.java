@@ -1,30 +1,33 @@
 import java.util.Scanner;
 
+import javax.swing.DefaultBoundedRangeModel;
+
 public class SumString {
 
     public static void main (String[] args) {
     
         Scanner scanner = new Scanner(System.in);
         String line = scanner.nextLine();
+        System.out.println("Enter the line");
         int sum = 0;
-        // 2+4-9
-        // 456+7+3-5
         char operation = ' ';
         StringBuilder sb = new StringBuilder();
         int i;
         if(isNumber(line.charAt(0))){
             operation = '+';
             i=0;
-        }
-        else
+        }else{
+            operation = line.charAt(0);
             i=1;
+        }
             for (; i < line.length(); i++) {
-            char element = line.charAt(i);
-            for (int j = i; j < line.length() && isNumber(element) ; j++ ,i++) {
-                   sb.append(element);
+            for (int j = i; j < line.length() && isNumber(line.charAt(i)) ; j++ ,i++) {
+                sb.append(line.charAt(i));
             }
-            doOperation(sum, operation,Integer.parseInt(sb.toString()));
-            operation = line.charAt(i);
+            sum = doOperation(sum, operation,Integer.parseInt(sb.toString()));
+            sb  = new StringBuilder();
+            if(i<line.length())
+                operation = line.charAt(i);
         }
         System.out.println(sum);
         scanner.close();
@@ -36,12 +39,13 @@ public class SumString {
         }
         return false;
     }
-    public static void doOperation (int sum,char operation ,int number){
+    public static int doOperation (int sum,char operation ,int number){
             switch (operation){
-                case '+' -> sum+=number;
-                case '-' -> sum-=number;
-                case '*' -> sum*=number;
-                case '/' -> sum/=number;
+                case '+': return sum+number;
+                case '-': return sum-number;
+                case '*': return sum*number;
+                case '/': return sum/number;
+                default: return sum; 
             }
     }   
 }
