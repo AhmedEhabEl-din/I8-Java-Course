@@ -79,7 +79,16 @@ public class App {
      * Given an array. Find the second largest element.
      */
     public static int getSecondLargest(int[] array) {
-        return -1;
+        int max1=Integer.MIN_VALUE ,max2 = Integer.MIN_VALUE;
+        for (int i = 0; i < array.length ; i++) {
+            if (array[i]>max1){
+                max2 = max1;
+                max1= array[i];
+            }else if (array[i]>max2 && array[i] != max1){
+                max2 = array[i];
+            }
+        }
+        return max2;
     }
 
     /**
@@ -137,6 +146,8 @@ public class App {
         System.out.printf("  Expected: %d, actual: %d.%n", 2, getSecondLargest(new int[]{3, 2, 1}));
         System.out.printf("  Expected: %d, actual: %d.%n", 2, getSecondLargest(new int[]{1, 3, 2}));
         System.out.printf("  Expected: %d, actual: %d.%n%n", 2, getSecondLargest(new int[]{2, 3, 1}));
+        System.out.printf("  Expected: %d, actual: %d.%n%n", 2, getSecondLargest(new int[]{2,4}));
+        System.out.printf("  Expected: %d, actual: %d.%n%n", 2, getSecondLargest(new int[]{2,4,4}));
 
         System.out.println("Задание №3.");
 
