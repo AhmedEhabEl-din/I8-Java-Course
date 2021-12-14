@@ -1,0 +1,27 @@
+abcdefghijklmnopqurtuvwxyz
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+1234567890
+1234
+Ha HaHa
+
+MetaCharacters_ (Need to be escaped):
+.[{()\^$|?*+
+
+coreyms.com
+coreyms.gov
+coreyms.ru
+
+^\d{3}[\.-]\d{3,4}[.-]\d{4}
+321-555-4321
+123.555.1234
+123.3577-1234
+1234.3577-1234
+
+
+Mr. Schafer
+Mr  Smith
+Ms Davis
+Mrs. Robinson
+Mr. T
+Ms davis
+M[rs]s?\.?\s+[A-Z](\w+)*
